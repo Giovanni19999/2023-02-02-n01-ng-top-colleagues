@@ -20,7 +20,7 @@ jobs:
         - name: Build
       run: npm run build
         - name: Generate 404.html file
-      run: cp dist/top-colleagues/index.html dist/top-colleagues/404.html
+      run: cp dist/2023-02-02-n01-ng-top-colleagues/index.html dist/2023-02-02-n01-ng-top-colleagues/404.html
         - name: Archive build
       if: success()
       uses: actions/upload-artifact@v1
@@ -43,4 +43,4 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: deploy_dist/top-colleagues
+        FOLDER: deploy_dist/2023-02-02-n01-ng-top-colleagues
