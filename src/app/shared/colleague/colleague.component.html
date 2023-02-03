@@ -1,6 +1,13 @@
+
 <div class=" text-center card">
+
   <img src="{{colleague.photo}}" class="img-thumbnail card-img-top" alt="pape">
+
   <p class="font-weight-bold align-content-center card-title">{{colleague.pseudo}}</p>
+
   <p class="card-text">{{colleague.score}}</p>
+
   <tc-like-hate (modifScore)="modifScore($event)"></tc-like-hate>
 </div>
+
+
