@@ -7,8 +7,8 @@ import {LikeHate} from "../models/LikeHate";
   styleUrls: ['./like-hate.component.scss']
 })
 export class LikeHateComponent {
-  @Output() modifScore =new EventEmitter<number>();
-  dester() {
+  @Output() modifScore =new EventEmitter<LikeHate>();
+  detester() {
     this.modifScore.emit(LikeHate.Hate)
   }
   aime() {

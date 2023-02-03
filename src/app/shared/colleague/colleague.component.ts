@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Colleague} from "../models/Colleague";
+import {LikeHate} from "../models/LikeHate";
 
-
+const max=1000;
+const min=-1000;
 
 @Component({
   selector: 'tc-colleague',
@@ -9,20 +11,25 @@ import {Colleague} from "../models/Colleague";
   styleUrls: ['./colleague.component.scss']
 })
 export class ColleagueComponent {
-  collegue: Colleague={
-    photo: "https://picsum.photos/200/250",
-    pseudo: "Gio",
-    score: -900,
-  }
+  @Input() colleague: Colleague ={
+    score: 0,
+    photo:"",
+    pseudo:"error"
 
-  modifScore(modification: number) {
-    let score = this.collegue.score;
+  };
+
+  modifScore(modification: LikeHate) {
+
+
+    let score = this.colleague.score;
     score+=modification;
-    if (score<-1000){
-      score=-1000;
-    }else if (score>=1000){
-      score=1000;
+    if (score<min){
+      score=min;
+    }else if (score>max){
+      score=max;
     }
-    this.collegue.score=score;
+
+     return this.colleague.score=score;
+
   }
 }

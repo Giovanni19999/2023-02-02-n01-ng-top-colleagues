@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Colleague} from "./shared/models/Colleague";
 
 @Component({
   selector: 'tc-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'top-colleagues';
 }
