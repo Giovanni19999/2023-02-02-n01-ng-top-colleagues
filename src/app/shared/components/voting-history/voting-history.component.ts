@@ -14,31 +14,14 @@ export class VotingHistoryComponent {
   @Input() vote: Vote = {
     vote: LikeHate.Like,
     colleague: {
-      photo: "",
-      pseudo: "moi",
-      score: 2
+      photo: "https://picsum.photos/300/400",
+      pseudo: "random",
+      score: 1000
     }
   }
 
 
-  histVote: Vote[] = [
-    {
-      vote: LikeHate.Like,
-      colleague: {
-        photo: "",
-        pseudo: "moi",
-        score: 2
-      }
-    },
-    {
-      vote: LikeHate.Hate,
-      colleague: {
-        photo: "",
-        pseudo: "moi",
-        score: 2
-      }
-    }
-  ];
+  histVote: Vote[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
 

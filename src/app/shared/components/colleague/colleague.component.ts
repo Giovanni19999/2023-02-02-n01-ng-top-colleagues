@@ -24,18 +24,9 @@ export class ColleagueComponent {
   };
 
   modifScore(modification: LikeHate) {
-
-
-    let score = this.colleague.score;
-    score += modification;
-    if (score < min) {
-      score = min;
-    } else if (score > max) {
-      score = max;
-    }
-
-    this.colleague.score = score;
     
+    this.colleague.score += modification;
+
     const colleagueTemp: Colleague = {
       score: this.colleague.score,
       pseudo: this.colleague.pseudo,
