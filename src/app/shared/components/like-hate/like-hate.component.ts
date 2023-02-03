@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {LikeHate} from "../models/LikeHate";
+import {LikeHate} from "../../models/LikeHate";
 
 @Component({
   selector: 'tc-like-hate',
@@ -7,10 +7,12 @@ import {LikeHate} from "../models/LikeHate";
   styleUrls: ['./like-hate.component.scss']
 })
 export class LikeHateComponent {
-  @Output() modifScore =new EventEmitter<LikeHate>();
+  @Output() modifScore = new EventEmitter<LikeHate>();
+
   detester() {
     this.modifScore.emit(LikeHate.Hate)
   }
+
   aime() {
     this.modifScore.emit(LikeHate.Like)
   }

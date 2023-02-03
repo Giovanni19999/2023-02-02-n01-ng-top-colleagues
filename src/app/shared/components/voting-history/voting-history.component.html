@@ -1,0 +1,19 @@
+<h2 class="border">Historique</h2>
+<ul class="row border list-group">
+  <li *ngFor="let unVote of histVote; let i = index" class="row ">
+
+    <img src="{{unVote.colleague.photo}}" alt="photo profile" class="col-2">
+    <div class="col-10">
+      <p>{{unVote.colleague.pseudo}}</p>
+      <p *ngIf="unVote.vote===Like">{{unVote.colleague.pseudo}} est aimé, ce collègue a désormais un score de
+        : {{unVote.colleague.score}} :-)</p>
+      <p *ngIf="unVote.vote===Hate">{{unVote.colleague.pseudo}} est détesté, ce collègue a désormais un score de
+        : {{unVote.colleague.score}} :-(</p>
+      <button (click)="suppr(i)">supprimer</button>
+    </div>
+
+
+  </li>
+
+</ul>
+
