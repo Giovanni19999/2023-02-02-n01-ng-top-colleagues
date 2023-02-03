@@ -1,2 +1,2 @@
-<button (click)="aime()" class="btn btn-primary col-5">J'aime</button>
-<button (click)="detester()" class="btn btn-danger offset-1 col-5">Je déteste</button>
+<button [disabled]="score >= 1000" (click)="aime()" class="btn btn-primary col-5">J'aime</button>
+<button [disabled]="score <= -1000" (click)="detester()" class="btn btn-danger offset-1 col-5">Je déteste</button>

@@ -11,9 +11,9 @@ export class WelcomePageComponent {
   vote: Vote = {
     vote: LikeHate.Like,
     colleague: {
-      photo: "",
+      photo: "https://picsum.photos/300/400",
       pseudo: "moi",
-      score: 2
+      score: 0
     }
   }
 

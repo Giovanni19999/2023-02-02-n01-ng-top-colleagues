@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {LikeHate} from "../../models/LikeHate";
 
+const max = 1000;
+
 @Component({
   selector: 'tc-like-hate',
   templateUrl: './like-hate.component.html',
@@ -13,15 +15,15 @@ export class LikeHateComponent {
   @Output() modifScore = new EventEmitter<LikeHate>();
 
   detester() {
-    if (this.score > -1000) {
-      this.modifScore.emit(LikeHate.Hate)
 
-    }
+    this.modifScore.emit(LikeHate.Hate)
+
+
   }
 
   aime() {
-    if (this.score < 1000) {
-      this.modifScore.emit(LikeHate.Like)
-    }
+
+    this.modifScore.emit(LikeHate.Like)
+
   }
 }
