@@ -1,7 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Colleague} from "../../models/Colleague";
 import {Vote} from "../../models/vote";
-import {LikeHate} from "../../models/LikeHate";
 
 @Component({
   selector: 'tc-list-colleague',
@@ -9,6 +8,8 @@ import {LikeHate} from "../../models/LikeHate";
   styleUrls: ['./list-colleague.component.scss']
 })
 export class ListColleagueComponent {
+  @Output() vote = new EventEmitter<Vote>();
+
   listCo: Colleague[] = [
     {
       photo: "https://picsum.photos/200/250",
@@ -51,18 +52,9 @@ export class ListColleagueComponent {
     }
   ]
 
-  vote: Vote = {
-    vote: LikeHate.Like,
-    colleague: {
-      photo: "",
-      pseudo: "moi",
-      score: 2
-    }
-  }
-
 
   voted(vote: Vote) {
+    this.vote.emit(vote)
 
-    this.vote = vote
   }
 }
