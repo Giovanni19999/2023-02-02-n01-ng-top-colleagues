@@ -9,12 +9,10 @@ export class VoteService {
 
   add(vote: Vote) {
     this.votes.push(vote);
-    console.log(this.votes)
   }
 
   deletByIndex(voteIndex: number) {
     this.votes.splice(voteIndex, 1);
-    console.log(this.votes)
   }
 
   constructor() {
