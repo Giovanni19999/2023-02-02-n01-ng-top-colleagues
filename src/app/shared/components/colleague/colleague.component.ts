@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Colleague} from "../../../models/Colleague";
 import {LikeHate} from "../../../models/LikeHate";
-import {Vote} from "../../../models/vote";
+import {VoteService} from "../../../providers/service/vote.service";
 
 const max = 1000;
 const min = -1000;
@@ -13,7 +13,8 @@ const min = -1000;
 })
 export class ColleagueComponent {
 
-  @Output() vote = new EventEmitter<Vote>();
+  constructor(private service: VoteService) {
+  }
 
 
   @Input() colleague: Colleague = {
@@ -23,19 +24,23 @@ export class ColleagueComponent {
 
   };
 
+
+  private vote: any;
+
   modifScore(modification: LikeHate) {
-
     this.colleague.score += modification;
-
     const colleagueTemp: Colleague = {
       score: this.colleague.score,
       pseudo: this.colleague.pseudo,
       photo: this.colleague.photo
     }
 
-    this.vote.emit({
+
+    this.service.add({
       colleague: colleagueTemp,
       vote: modification
-    });
+    })
+
+
   }
 }

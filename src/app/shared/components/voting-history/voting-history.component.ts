@@ -1,4 +1,4 @@
-import {Component, Input, SimpleChanges} from '@angular/core';
+import {Component} from '@angular/core';
 import {Vote} from "../../../models/vote";
 import {LikeHate} from "../../../models/LikeHate";
 import {VoteService} from "../../../providers/service/vote.service";
@@ -12,36 +12,21 @@ export class VotingHistoryComponent {
   Like = LikeHate.Like;
   Hate = LikeHate.Hate;
 
-  iteration = 0
-
-  @Input() vote: Vote = {
-    vote: LikeHate.Like,
-    colleague: {
-      photo: "https://picsum.photos/300/400",
-      pseudo: "random",
-      score: 1000
-    }
-  }
 
   constructor(private service: VoteService) {
-    this.histVote = service.votes;
+    service.votesObs.subscribe(value => {
+      this.histVote.unshift(value);
+    });
+    service.votesObsDelete.subscribe(value => this.histVote.splice(value, 1))
   }
 
 
   histVote: Vote[] = [];
 
-  ngOnChanges(changes: SimpleChanges) {
-
-    const lastVote = changes["vote"];
-    this.iteration++
-    if (this.iteration !== 1) {
-      if (lastVote) {
-        this.service.add(lastVote.currentValue);
-      }
-    }
-  }
 
   suppr(index: number) {
-    this.service.deletByIndex(index);
+    this.service.deleteByIndex(index);
+
+
   }
 }

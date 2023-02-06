@@ -5,6 +5,8 @@ import {ColleagueComponent} from './components/colleague/colleague.component';
 import {ListColleagueComponent} from './components/list-colleague/list-colleague.component';
 import {ScorePipe} from './pipes/score.pipe';
 import {VotingHistoryComponent} from './components/voting-history/voting-history.component';
+import {CounterComponent} from './components/counter/counter.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -13,14 +15,17 @@ import {VotingHistoryComponent} from './components/voting-history/voting-history
     ColleagueComponent,
     ListColleagueComponent,
     ScorePipe,
-    VotingHistoryComponent
+    VotingHistoryComponent,
+    CounterComponent
   ],
   exports: [
     ListColleagueComponent,
-    VotingHistoryComponent
+    VotingHistoryComponent,
+    CounterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ]
 })
 export class SharedModule {

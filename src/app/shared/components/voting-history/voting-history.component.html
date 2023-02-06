@@ -1,6 +1,6 @@
 <h2 class="border">Historique</h2>
 <ul class="row border list-group">
-  <li *ngFor="let unVote of histVote; let i = index" class="row ">
+  <li *ngFor="let unVote of (histVote); let i = index" class="row ">
     <div class="col-6">
 
       <img src="{{unVote.colleague.photo}}" alt="photo profile" class="img-fluid">
