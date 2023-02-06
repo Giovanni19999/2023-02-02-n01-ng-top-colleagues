@@ -11,6 +11,8 @@ export class VotingHistoryComponent {
   Like = LikeHate.Like;
   Hate = LikeHate.Hate;
 
+  iteration = 0
+
   @Input() vote: Vote = {
     vote: LikeHate.Like,
     colleague: {
@@ -26,8 +28,11 @@ export class VotingHistoryComponent {
   ngOnChanges(changes: SimpleChanges) {
 
     const lastVote = changes["vote"];
-    if (lastVote) {
-      this.histVote.unshift(lastVote.currentValue)
+    this.iteration++
+    if (this.iteration !== 1) {
+      if (lastVote) {
+        this.histVote.unshift(lastVote.currentValue)
+      }
     }
   }
 
