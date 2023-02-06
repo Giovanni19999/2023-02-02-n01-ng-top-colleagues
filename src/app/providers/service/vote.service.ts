@@ -8,7 +8,7 @@ export class VoteService {
   votes: Vote[] = [];
 
   add(vote: Vote) {
-    this.votes.push(vote);
+    this.votes.unshift(vote)
   }
 
   deletByIndex(voteIndex: number) {
