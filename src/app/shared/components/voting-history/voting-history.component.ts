@@ -1,6 +1,7 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
 import {Vote} from "../../../models/vote";
 import {LikeHate} from "../../../models/LikeHate";
+import {VoteService} from "../../../providers/service/vote.service";
 
 @Component({
   selector: 'tc-voting-history',
@@ -22,6 +23,10 @@ export class VotingHistoryComponent {
     }
   }
 
+  constructor(private service: VoteService) {
+    this.histVote = service.votes;
+  }
+
 
   histVote: Vote[] = [];
 
@@ -31,12 +36,12 @@ export class VotingHistoryComponent {
     this.iteration++
     if (this.iteration !== 1) {
       if (lastVote) {
-        this.histVote.unshift(lastVote.currentValue)
+        this.service.add(lastVote.currentValue);
       }
     }
   }
 
   suppr(index: number) {
-    this.histVote.splice(index, 1);
+    this.service.deletByIndex(index);
   }
 }
