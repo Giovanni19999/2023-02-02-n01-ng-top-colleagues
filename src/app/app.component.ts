@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {Colleague} from "./shared/models/Colleague";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'tc-root',

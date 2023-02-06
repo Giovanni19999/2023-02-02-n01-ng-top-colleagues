@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Vote} from "../../../shared/models/vote";
-import {LikeHate} from "../../../shared/models/LikeHate";
+import {Vote} from "../../../models/vote";
+import {LikeHate} from "../../../models/LikeHate";
 
 @Component({
   selector: 'tc-welcome-page',

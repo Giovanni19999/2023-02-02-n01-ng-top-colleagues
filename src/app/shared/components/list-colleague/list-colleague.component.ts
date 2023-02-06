@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {Colleague} from "../../models/Colleague";
-import {Vote} from "../../models/vote";
+import {Colleague} from "../../../models/Colleague";
+import {Vote} from "../../../models/vote";
 
 @Component({
   selector: 'tc-list-colleague',

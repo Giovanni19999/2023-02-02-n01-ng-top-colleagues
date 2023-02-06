@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Colleague} from "../../models/Colleague";
-import {LikeHate} from "../../models/LikeHate";
-import {Vote} from "../../models/vote";
+import {Colleague} from "../../../models/Colleague";
+import {LikeHate} from "../../../models/LikeHate";
+import {Vote} from "../../../models/vote";
 
 const max = 1000;
 const min = -1000;
@@ -24,7 +24,7 @@ export class ColleagueComponent {
   };
 
   modifScore(modification: LikeHate) {
-    
+
     this.colleague.score += modification;
 
     const colleagueTemp: Colleague = {

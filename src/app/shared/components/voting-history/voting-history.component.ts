@@ -1,6 +1,6 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
-import {Vote} from "../../models/vote";
-import {LikeHate} from "../../models/LikeHate";
+import {Vote} from "../../../models/vote";
+import {LikeHate} from "../../../models/LikeHate";
 
 @Component({
   selector: 'tc-voting-history',

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {LikeHate} from "../../models/LikeHate";
+import {LikeHate} from "../../../models/LikeHate";
 
 const max = 1000;
 
