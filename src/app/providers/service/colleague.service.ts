@@ -7,10 +7,9 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ColleagueService {
-  url = "http://dev.cleverapps.io/api/v2/colleagues"
+  url = "https://dev.cleverapps.io/api/v2/colleagues"
 
   colleagues: Observable<Colleague[]>
-  test: Observable<Colleague[]> = new Observable();
 
   refresh() {
     this.colleagues = this.http.get<Colleague[]>(this.url)
