@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {VoteService} from "../../../providers/service/vote.service";
-import {LikeHate} from "../../../models/LikeHate";
 
 @Component({
   selector: 'tc-counter',
@@ -15,13 +14,10 @@ export class CounterComponent {
   constructor(private service: VoteService) {
 
     service.votesObs.subscribe(value => {
-      if (value.vote === LikeHate.Like) {
-        this.like++
+        this.hate = this.service.hate
+        this.like = this.service.like
       }
-      if (value.vote === LikeHate.Hate) {
-        this.hate++
-      }
-    })
+    )
   }
 
 
