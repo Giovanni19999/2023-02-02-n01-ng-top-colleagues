@@ -1,53 +1,27 @@
 import {Injectable} from '@angular/core';
 import {Colleague} from "../../models/Colleague";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColleagueService {
-  colleagues: Colleague[] = [{
+  url = "http://dev.cleverapps.io/api/v2/colleagues"
 
-    photo: "https://picsum.photos/200/250",
-    pseudo: "Gio",
-    score: 0,
+  colleagues: Observable<Colleague[]>
+  test: Observable<Colleague[]> = new Observable();
 
-  },
-    {
-
-      photo: "https://picsum.photos/200/251",
-      pseudo: "moi",
-      score: 0,
-    },
-    {
-
-      photo: "https://picsum.photos/200/252",
-      pseudo: "vin",
-      score: 0,
-    },
-    {
-
-      photo: "https://picsum.photos/200/253",
-      pseudo: "lolo",
-      score: 0,
-    },
-    {
-
-      photo: "https://picsum.photos/200/254",
-      pseudo: "toi",
-      score: 0,
-    },
-    {
-      photo: "https://picsum.photos/200/255",
-      pseudo: "paul",
-      score: 0,
-    },
-    {
-      photo: "https://picsum.photos/200/256",
-      pseudo: "able",
-      score: 0,
-    }]
+  refresh() {
+    this.colleagues = this.http.get<Colleague[]>(this.url)/*.subscribe({
+        next: (response) => response*/
+    //
+    //   }
+    // )
+  }
 
 
-  constructor() {
+  constructor(private http: HttpClient) {
+    this.colleagues = this.http.get<Colleague[]>(this.url)
   }
 }

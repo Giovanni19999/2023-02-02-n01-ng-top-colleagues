@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {Colleague} from "../../../models/Colleague";
-import {Vote} from "../../../models/vote";
 import {ColleagueService} from "../../../providers/service/colleague.service";
-import {VoteService} from "../../../providers/service/vote.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'tc-list-colleague',
@@ -10,16 +9,17 @@ import {VoteService} from "../../../providers/service/vote.service";
   styleUrls: ['./list-colleague.component.scss']
 })
 export class ListColleagueComponent {
-  @Output() vote = new EventEmitter<Vote>();
-  listCo: Colleague[];
+  listCo: Observable<Colleague[]>;
 
-  constructor(private service: ColleagueService, private service2: VoteService) {
+  constructor(private service: ColleagueService) {
+    this.service.refresh();
     this.listCo = this.service.colleagues;
   }
 
 
-  voted(vote: Vote) {
-    this.service2.add(vote)
+  refresh() {
+    this.service.refresh();
+    this.listCo = this.service.colleagues;
   }
 
 
