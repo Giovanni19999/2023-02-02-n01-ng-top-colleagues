@@ -28,7 +28,6 @@ export class ColleagueComponent {
   private vote: any;
 
   modifScore(modification: LikeHate) {
-    this.colleague.score += modification;
     const colleagueTemp: Colleague = {
       score: this.colleague.score,
       pseudo: this.colleague.pseudo,
@@ -38,7 +37,8 @@ export class ColleagueComponent {
 
     this.service.add({
       colleague: colleagueTemp,
-      vote: modification
+      vote: modification,
+      score: modification + colleagueTemp.score,
     })
 
 

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {Vote} from "../../../models/vote";
-import {LikeHate} from "../../../models/LikeHate";
 import {VoteService} from "../../../providers/service/vote.service";
+import {Observable} from "rxjs";
+import {VotePoste} from "../../../models/vote-poste";
 
 @Component({
   selector: 'tc-voting-history',
@@ -9,19 +9,16 @@ import {VoteService} from "../../../providers/service/vote.service";
   styleUrls: ['./voting-history.component.scss']
 })
 export class VotingHistoryComponent {
-  Like = LikeHate.Like;
-  Hate = LikeHate.Hate;
+  Like = "LIKE";
+  Hate = "HATE";
 
 
   constructor(private service: VoteService) {
-    service.votesObs.subscribe(value => {
-      this.histVote.unshift(value);
-    });
-    service.votesObsDelete.subscribe(value => this.histVote.splice(value, 1))
+    this.histVote = service.votesObs;
   }
 
 
-  histVote: Vote[] = [];
+  histVote: Observable<VotePoste[]>;
 
 
   suppr(index: number) {

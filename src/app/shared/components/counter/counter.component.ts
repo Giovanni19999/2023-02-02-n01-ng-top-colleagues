@@ -13,11 +13,19 @@ export class CounterComponent {
 
   constructor(private service: VoteService) {
 
-    service.votesObs.subscribe(value => {
-        this.hate = this.service.hate
-        this.like = this.service.like
+    service.votesObs.forEach(value => value.forEach(value1 => {
+      if (value1.like_hate === "LIKE") {
+        this.like++
+
       }
-    )
+      if (value1.like_hate === "HATE") {
+        this.hate++
+
+      }
+
+    }))
+
+
   }
 
 

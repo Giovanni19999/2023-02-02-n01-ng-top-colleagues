@@ -1,21 +1,22 @@
 <h2 class="border">Historique</h2>
 <ul class="row border list-group">
-  <li *ngFor="let unVote of (histVote); let i = index" class="row ">
-    <div class="col-6">
+  <div *ngIf="histVote">
+    <li *ngFor="let unVote of (histVote|async); let i = index" class="row ">
+      <div class="col-6">
 
-      <img src="{{unVote.colleague.photo}}" alt="photo profile" class="img-fluid">
-    </div>
-    <div class="col-6">
-      <p>{{unVote.colleague.pseudo}}</p>
-      <p *ngIf="unVote.vote===Like">{{unVote.colleague.pseudo}} est aimé, ce collègue a désormais un score de
-        : {{unVote.colleague.score}} :-)</p>
-      <p *ngIf="unVote.vote===Hate">{{unVote.colleague.pseudo}} est détesté, ce collègue a désormais un score de
-        : {{unVote.colleague.score}} :-(</p>
-      <button (click)="suppr(i)" class="btn-danger btn">supprimer</button>
-    </div>
+        <img src="{{unVote.colleague.photo}}" alt="photo profile" class="img-fluid">
+      </div>
+      <div class="col-6">
+        <p>{{unVote.colleague.pseudo}}</p>
+        <p *ngIf="unVote.like_hate===Like">{{unVote.colleague.pseudo}} est aimé, ce collègue a désormais un score de
+          : {{unVote.colleague.score}} :-)</p>
+        <p *ngIf="unVote.like_hate===Hate">{{unVote.colleague.pseudo}} est détesté, ce collègue a désormais un score de
+          : {{unVote.score}} :-(</p>
+        <button (click)="suppr(i)" class="btn-danger btn">supprimer</button>
+      </div>
 
 
-  </li>
-
+    </li>
+  </div>
 </ul>
 

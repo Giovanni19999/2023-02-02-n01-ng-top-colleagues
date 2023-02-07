@@ -3,5 +3,6 @@ import {Colleague} from "./Colleague";
 
 export interface Vote {
   vote: LikeHate;
-  colleague:Colleague;
+  colleague: Colleague;
+  score: number
 }

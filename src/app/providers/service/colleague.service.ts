@@ -13,11 +13,7 @@ export class ColleagueService {
   test: Observable<Colleague[]> = new Observable();
 
   refresh() {
-    this.colleagues = this.http.get<Colleague[]>(this.url)/*.subscribe({
-        next: (response) => response*/
-    //
-    //   }
-    // )
+    this.colleagues = this.http.get<Colleague[]>(this.url)
   }
 
 

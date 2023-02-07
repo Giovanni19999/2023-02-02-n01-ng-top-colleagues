@@ -1,18 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Vote} from "../../models/vote";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {LikeHate} from "../../models/LikeHate";
+import {HttpClient} from "@angular/common/http";
+import {VotePoste} from "../../models/vote-poste";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VoteService {
   votes: Vote[] = [];
+  url = "https://dev.cleverapps.io/api/v2/votes"
 
   private votesSub = new Subject<Vote>();
   private votesSubDelet = new Subject<number>();
   votesObsDelete = this.votesSubDelet.asObservable();
-  votesObs = this.votesSub.asObservable();
+  votesObs: Observable<VotePoste[]>
+
 
   like = 0;
   hate = 0;
@@ -27,6 +31,14 @@ export class VoteService {
       this.hate++
     }
     this.votesSub.next(vote)
+
+
+  }
+
+  refresh() {
+    this.votesObs = this.http.get<VotePoste[]>(this.url)
+
+
   }
 
   deleteByIndex(voteIndex: number) {
@@ -38,6 +50,10 @@ export class VoteService {
   }
 
 
-  constructor() {
+// Envoie de la requête POST
+
+
+  constructor(private http: HttpClient) {
+    this.votesObs = http.get<VotePoste[]>(this.url)
   }
 }
