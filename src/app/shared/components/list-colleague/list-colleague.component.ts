@@ -21,7 +21,7 @@ export class ListColleagueComponent {
   refresh() {
     this.service.refresh();
     this.servVote.refresh();
-    this.listCo = this.service.colleagues;
+
 
   }
 
