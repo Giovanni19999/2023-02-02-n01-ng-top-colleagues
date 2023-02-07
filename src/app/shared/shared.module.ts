@@ -8,6 +8,7 @@ import {VotingHistoryComponent} from './components/voting-history/voting-history
 import {CounterComponent} from './components/counter/counter.component';
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
+import {RefreshComponent} from './components/refresh/refresh.component';
 
 
 @NgModule({
@@ -17,12 +18,14 @@ import {HttpClientModule} from "@angular/common/http";
     ListColleagueComponent,
     ScorePipe,
     VotingHistoryComponent,
-    CounterComponent
+    CounterComponent,
+    RefreshComponent
   ],
   exports: [
     ListColleagueComponent,
     VotingHistoryComponent,
-    CounterComponent
+    CounterComponent,
+    RefreshComponent
   ],
   imports: [
     CommonModule,

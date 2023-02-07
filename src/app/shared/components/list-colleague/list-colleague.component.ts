@@ -14,15 +14,7 @@ export class ListColleagueComponent {
 
   constructor(private service: ColleagueService, private servVote: VoteService) {
     this.service.refresh();
-    this.listCo = this.service.colleagues;
-  }
-
-
-  refresh() {
-    this.service.refresh();
-    this.servVote.refresh();
-
-
+    this.listCo = this.service.colleaguesObs;
   }
 
 

@@ -1,9 +1,4 @@
 <div class="row">
-  <div class="col-3 text-center">
-    <button (click)="refresh()">Rafraichir</button>
-  </div>
-</div>
-<div class="row">
   <tc-colleague *ngFor="let colleague of listCo|async" [colleague]="colleague"
                 class="col-4"></tc-colleague>
 

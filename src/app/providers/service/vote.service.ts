@@ -1,59 +1,59 @@
 import {Injectable} from '@angular/core';
 import {Vote} from "../../models/vote";
-import {Observable, Subject} from "rxjs";
-import {LikeHate} from "../../models/LikeHate";
-import {HttpClient} from "@angular/common/http";
+import {Subject} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {VotePoste} from "../../models/vote-poste";
+import {LikeHate} from "../../models/LikeHate";
+import {VotePost2} from "../../models/vote-post2";
+import {ColleagueService} from "./colleague.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VoteService {
-  votes: Vote[] = [];
   url = "https://dev.cleverapps.io/api/v2/votes"
 
-  private votesSub = new Subject<Vote>();
-  private votesSubDelet = new Subject<number>();
-  votesObsDelete = this.votesSubDelet.asObservable();
-  votesObs: Observable<VotePoste[]>
+  private votesSub = new Subject<VotePoste[]>();
+
+  votesObs = this.votesSub.asObservable()
 
 
-  like = 0;
-  hate = 0;
-
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   add(vote: Vote) {
-    this.votes.unshift(vote)
-    if (vote.vote == LikeHate.Like) {
-      this.like++
+    let voteP: VotePost2 = {
+      like_hate: "",
+      pseudo: vote.colleague.pseudo
     }
-    if (vote.vote == LikeHate.Hate) {
-      this.hate++
+    if (vote.vote === LikeHate.Like) {
+      voteP.like_hate = "LIKE"
     }
-    this.votesSub.next(vote)
 
+    if (vote.vote === LikeHate.Hate) {
+      voteP.like_hate = "HATE"
+    }
+
+    this.http.post<VotePost2>(this.url, voteP, this.httpOptions).subscribe()
+    this.refresh();
+    this.servColleague.refresh();
 
   }
 
   refresh() {
-    this.votesObs = this.http.get<VotePoste[]>(this.url)
-
-
+    this.http.get<VotePoste[]>(this.url).subscribe(value => this.votesSub.next(value));
   }
 
   deleteByIndex(voteIndex: number) {
 
-    this.votes.splice(voteIndex, 1);
-    this.votesSubDelet.next(voteIndex);
-
 
   }
 
 
-// Envoie de la requête POST
-
-
-  constructor(private http: HttpClient) {
-    this.votesObs = http.get<VotePoste[]>(this.url)
+  constructor(private http: HttpClient, private servColleague: ColleagueService) {
+    this.http.get<VotePoste[]>(this.url).subscribe(value => this.votesSub.next(value))
   }
 }
