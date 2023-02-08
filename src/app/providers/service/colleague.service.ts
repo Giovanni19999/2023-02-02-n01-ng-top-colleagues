@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Colleague} from "../../models/Colleague";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Subject} from "rxjs";
+import {CollegueForm} from "../../models/collegue-form";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,19 @@ export class ColleagueService {
   colleagueSub = new Subject<Colleague[]>();
 
   colleaguesObs = this.colleagueSub.asObservable()
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
 
   refresh() {
     this.http.get<Colleague[]>(this.url).subscribe(value => this.colleagueSub.next(value))
+  }
+
+  add(newColl: Partial<CollegueForm>) {
+    this.http.post<CollegueForm>(this.url, newColl, this.httpOptions).subscribe();
   }
 
 

@@ -1,6 +1,6 @@
 export interface CollegueForm {
   pseudo: string,
-  nom: string,
-  prenom: string,
+  first: string,
+  last: string,
   photo: string,
 }

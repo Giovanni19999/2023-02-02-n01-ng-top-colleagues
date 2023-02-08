@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {CollegueForm} from "../../../models/collegue-form";
+import {ColleagueService} from "../../../providers/service/colleague.service";
 
 @Component({
   selector: 'tc-create-colleague-forms',
@@ -8,9 +9,12 @@ import {CollegueForm} from "../../../models/collegue-form";
 })
 export class CreateColleagueFormsComponent {
 
-  newColleague: Partial<CollegueForm> = {}
+  newColleague: Partial<CollegueForm> = {};
+
+  constructor(private service: ColleagueService) {
+  }
 
   valid() {
-
+    this.service.add(this.newColleague)
   }
 }
