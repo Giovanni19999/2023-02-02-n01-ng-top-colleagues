@@ -11,10 +11,14 @@ export class CreateColleagueFormsComponent {
 
   newColleague: Partial<CollegueForm> = {};
 
+
   constructor(private service: ColleagueService) {
+
   }
 
   valid() {
     this.service.add(this.newColleague)
   }
+
+
 }

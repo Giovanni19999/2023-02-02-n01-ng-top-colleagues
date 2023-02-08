@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {RefreshComponent} from './components/refresh/refresh.component';
 import {CreateColleagueFormsComponent} from './components/create-colleague-forms/create-colleague-forms.component';
 import {FormsModule} from "@angular/forms";
+import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {FormsModule} from "@angular/forms";
     VotingHistoryComponent,
     CounterComponent,
     RefreshComponent,
-    CreateColleagueFormsComponent
+    CreateColleagueFormsComponent,
+    FirstLastValidatorDirective
   ],
   exports: [
     ListColleagueComponent,
