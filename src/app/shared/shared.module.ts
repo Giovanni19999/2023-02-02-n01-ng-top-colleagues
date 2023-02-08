@@ -9,6 +9,8 @@ import {CounterComponent} from './components/counter/counter.component';
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {RefreshComponent} from './components/refresh/refresh.component';
+import {CreateColleagueFormsComponent} from './components/create-colleague-forms/create-colleague-forms.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -19,18 +21,21 @@ import {RefreshComponent} from './components/refresh/refresh.component';
     ScorePipe,
     VotingHistoryComponent,
     CounterComponent,
-    RefreshComponent
+    RefreshComponent,
+    CreateColleagueFormsComponent
   ],
   exports: [
     ListColleagueComponent,
     VotingHistoryComponent,
     CounterComponent,
-    RefreshComponent
+    RefreshComponent,
+    CreateColleagueFormsComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ]
 })
 export class SharedModule {

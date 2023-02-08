@@ -37,7 +37,7 @@ export class VoteService {
       voteP.like_hate = "HATE"
     }
 
-    this.http.post<VotePost2>(this.url, voteP, this.httpOptions).subscribe(value => {
+    this.http.post<VotePost2>(this.url, voteP, this.httpOptions).subscribe(() => {
       this.refresh();
       this.servColleague.refresh();
     })

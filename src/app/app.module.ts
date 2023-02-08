@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SharedModule} from "./shared/shared.module";
 import {WelcomeModule} from "./pages/welcome/welcome.module";
+import {CreateColleagueModule} from "./pages/create-colleague/create-colleague.module";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {WelcomeModule} from "./pages/welcome/welcome.module";
     NgbModule,
     SharedModule,
     WelcomeModule,
+    CreateColleagueModule,
 
   ],
   providers: [],

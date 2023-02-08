@@ -1,0 +1,24 @@
+<form #form="ngForm">
+  <div class="row">
+
+    <label class="col-3 offset-1">Pseudo</label>
+    <input type="text" class="col-4" name="pseudo" [(ngModel)]="newColleague.pseudo" required>
+  </div>
+  <div class="row">
+    <label class="col-3 offset-1">Nom</label>
+    <input type="text" class="col-4" name="nom" [(ngModel)]="newColleague.nom" required minlength="2">
+  </div>
+  <div class="row">
+    <label class="col-3 offset-1">Prenom</label>
+    <input type="text" class="col-4" name="prenom" [(ngModel)]="newColleague.prenom" required minlength="2">
+  </div>
+  <div class="row">
+
+    <label class="col-3 offset-1">Photo Url</label>
+    <input type="text" class="col-4" name="photo" [(ngModel)]="newColleague.photo" required>
+  </div>
+  <div class="row">
+    <button (click)="valid()" class="col-2 offset-5" [disabled]="form.invalid">ajouter</button>
+
+  </div>
+</form>
