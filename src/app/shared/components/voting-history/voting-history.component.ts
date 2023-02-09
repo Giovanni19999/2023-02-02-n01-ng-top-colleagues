@@ -14,6 +14,7 @@ export class VotingHistoryComponent {
 
 
   constructor(private service: VoteService) {
+    this.service.refresh();
     this.histVote = service.votesObs;
   }
 
