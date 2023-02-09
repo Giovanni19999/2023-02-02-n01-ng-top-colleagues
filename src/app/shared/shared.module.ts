@@ -12,6 +12,7 @@ import {RefreshComponent} from './components/refresh/refresh.component';
 import {CreateColleagueFormsComponent} from './components/create-colleague-forms/create-colleague-forms.component';
 import {FormsModule} from "@angular/forms";
 import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
+import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FirstLastValidatorDirective } from './validators/first-last-validator.d
     CounterComponent,
     RefreshComponent,
     CreateColleagueFormsComponent,
-    FirstLastValidatorDirective
+    FirstLastValidatorDirective,
+    PseudoValidatorDirective
   ],
   exports: [
     ListColleagueComponent,

@@ -1,23 +1,29 @@
-{{nom.value}},{{pre.value}}
+{{newColleague|json}}
 
 <form tcFirstLastValidator="{{nom.value}},{{pre.value}}" #form="ngForm">
   <div class="row">
 
     <label class="col-3 offset-1">Pseudo</label>
-    <input type="text" class="col-4" name="pseudo" [(ngModel)]="newColleague.pseudo" required>
+    <input type="text" class="col-4" name="pseudo" #pseudo="ngModel" tcPseudoValidator="{{pseudo.value}}"
+           [(ngModel)]="newColleague.pseudo" required>
+    <p *ngIf="pseudo.invalid">nom erroné</p>
   </div>
   <div class="row">
     <label class="col-3 offset-1">Nom</label>
-    <input type="text" class="col-4" name="nom" #nom [(ngModel)]="newColleague.last" required minlength="2">
+    <input type="text" class="col-4" name="nom" #nom="ngModel" [(ngModel)]="newColleague.last" required minlength="2">
+    <p *ngIf="nom.invalid">nom erroné</p>
   </div>
   <div class="row">
     <label class="col-3 offset-1">Prenom</label>
-    <input type="text" class="col-4" name="prenom" #pre [(ngModel)]="newColleague.first" required minlength="2">
+    <input type="text" class="col-4"
+           name="prenom" #pre="ngModel" [(ngModel)]="newColleague.first" required minlength="2">
+    <p *ngIf="pre.invalid">nom erroné</p>
   </div>
   <div class="row">
 
     <label class="col-3 offset-1">Photo Url</label>
-    <input type="text" class="col-4" name="photo" [(ngModel)]="newColleague.photo" required>
+    <input type="text" class="col-4" name="photo" #url="ngModel" [(ngModel)]="newColleague.photo" required>
+    <p *ngIf="url.invalid">url erroné</p>
   </div>
 
 
