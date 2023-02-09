@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ColleaguComplet} from "../../../models/colleagu-complet";
 import {ColleagueService} from "../../../providers/service/colleague.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'tc-colleague-complet',
@@ -18,11 +18,13 @@ export class ColleagueCompletComponent {
     last: ""
   };
 
-  constructor(private serviceCo: ColleagueService, private activatedRoute: ActivatedRoute) {
+  constructor(private serviceCo: ColleagueService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       const pseudo = paramMap.get("pseudo")
       if (pseudo) {
-        serviceCo.getCollegue(pseudo).subscribe(value => {
+        this.serviceCo.getCollegue(pseudo).subscribe(value => {
           this.colleague = value
         })
       }
@@ -30,5 +32,9 @@ export class ColleagueCompletComponent {
     })
 
 
+  }
+
+  back() {
+    this.router.navigateByUrl("/colleagues")
   }
 }
