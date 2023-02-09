@@ -11,8 +11,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {RefreshComponent} from './components/refresh/refresh.component';
 import {CreateColleagueFormsComponent} from './components/create-colleague-forms/create-colleague-forms.component';
 import {FormsModule} from "@angular/forms";
-import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
-import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
+import {FirstLastValidatorDirective} from './validators/first-last-validator.directive';
+import {PseudoValidatorDirective} from './validators/pseudo-validator.directive';
+import {MenuComponent} from './components/menu/menu.component';
+import {RouterModule} from "@angular/router";
+import { ColleagueCompletComponent } from './components/colleague-complet/colleague-complet.component';
 
 
 @NgModule({
@@ -26,20 +29,24 @@ import { PseudoValidatorDirective } from './validators/pseudo-validator.directiv
     RefreshComponent,
     CreateColleagueFormsComponent,
     FirstLastValidatorDirective,
-    PseudoValidatorDirective
+    PseudoValidatorDirective,
+    MenuComponent,
+    ColleagueCompletComponent
   ],
   exports: [
     ListColleagueComponent,
     VotingHistoryComponent,
     CounterComponent,
     RefreshComponent,
-    CreateColleagueFormsComponent
+    CreateColleagueFormsComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
   ]
 })
 export class SharedModule {

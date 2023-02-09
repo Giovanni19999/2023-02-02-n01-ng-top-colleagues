@@ -2,7 +2,8 @@
 
   <img src="{{colleague.photo}}" class="img-thumbnail card-img-top" alt="pape">
 
-  <p class="align-content-center card-title">{{colleague.pseudo|uppercase}}</p>
+  <a routerLink="/colleagues/{{colleague.pseudo}}"
+     class="align-content-center card-title">{{colleague.pseudo|uppercase}}</a>
 
   <p class="card-text">{{colleague.score|score}}</p>
 

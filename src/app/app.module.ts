@@ -7,6 +7,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SharedModule} from "./shared/shared.module";
 import {WelcomeModule} from "./pages/welcome/welcome.module";
 import {CreateColleagueModule} from "./pages/create-colleague/create-colleague.module";
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import {CreateColleagueModule} from "./pages/create-colleague/create-colleague.m
     SharedModule,
     WelcomeModule,
     CreateColleagueModule,
+    AppRoutingModule,
+
 
   ],
   providers: [],

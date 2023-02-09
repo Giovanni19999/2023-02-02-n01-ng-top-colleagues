@@ -3,6 +3,7 @@ import {Colleague} from "../../models/Colleague";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Subject} from "rxjs";
 import {CollegueForm} from "../../models/collegue-form";
+import {ColleaguComplet} from "../../models/colleagu-complet";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class ColleagueService {
 
   refresh() {
     this.http.get<Colleague[]>(this.url).subscribe(value => this.colleagueSub.next(value))
+  }
+
+  getCollegue(pseudo: string) {
+    return this.http.get<ColleaguComplet>(this.url + "/" + pseudo)
   }
 
   add(newColl: Partial<CollegueForm>) {
