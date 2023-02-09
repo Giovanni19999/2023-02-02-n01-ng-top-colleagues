@@ -21,6 +21,7 @@ export class ColleagueCompletComponent {
   constructor(private serviceCo: ColleagueService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
+
     this.activatedRoute.paramMap.subscribe(paramMap => {
       const pseudo = paramMap.get("pseudo")
       if (pseudo) {
@@ -35,6 +36,6 @@ export class ColleagueCompletComponent {
   }
 
   back() {
-    this.router.navigateByUrl("/colleagues")
+    this.router.navigateByUrl("../")
   }
 }
